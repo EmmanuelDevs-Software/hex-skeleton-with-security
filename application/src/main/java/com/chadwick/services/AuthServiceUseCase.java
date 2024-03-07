@@ -45,4 +45,9 @@ public class AuthServiceUseCase implements AuthServicePort {
     public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
         authRepository.refreshToken(request, response);
     }
+
+    @Override
+    public User getUserByToken(String token) {
+        return authRepository.getUserByToken(token);
+    }
 }

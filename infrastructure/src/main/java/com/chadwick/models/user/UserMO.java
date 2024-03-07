@@ -34,8 +34,8 @@ public class UserMO implements UserDetails {
     @Enumerated(EnumType.STRING)
     private RoleMO role;
 
-    @OneToMany(mappedBy = "userMO")
-    private List<TokenMO> tokens;
+  /*  @OneToMany(mappedBy = "userMO")
+    private List<TokenMO> tokens;*/
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

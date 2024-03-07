@@ -20,5 +20,5 @@ public class User {
     private String email;
     private String password;
 
-    private List<TokenDomain> tokens;
+   // private List<TokenDomain> tokens;
 }

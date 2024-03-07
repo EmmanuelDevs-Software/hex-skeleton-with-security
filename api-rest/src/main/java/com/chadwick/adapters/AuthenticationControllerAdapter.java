@@ -3,15 +3,13 @@ package com.chadwick.adapters;
 import com.chadwick.domain.security.AuthenticationRequest;
 import com.chadwick.domain.security.AuthenticationResponse;
 import com.chadwick.domain.security.RegisterRequest;
+import com.chadwick.domain.security.User;
 import com.chadwick.ports.in.AuthServicePort;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -45,10 +43,11 @@ public class AuthenticationControllerAdapter {
         service.refreshToken(request, response);
     }
 
-//    @GetMapping("/user")
-//    public UserBasicsMO getUser(@RequestHeader("User-Email") String email) {
-//        return service.findByEmail(email);
-//    }
+   @GetMapping("/user")
+    public User getUserByToken(@RequestHeader("Authorization") String token) {
+        var removeBearer = token.substring(7);
+       return service.getUserByToken(removeBearer);
+    }
 
 
 }

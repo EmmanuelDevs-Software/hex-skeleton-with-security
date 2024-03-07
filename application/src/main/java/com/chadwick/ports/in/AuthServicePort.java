@@ -23,4 +23,6 @@ public interface AuthServicePort {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws IOException;
+
+    User getUserByToken(String token);
 }

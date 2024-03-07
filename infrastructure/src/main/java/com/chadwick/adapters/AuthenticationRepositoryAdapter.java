@@ -140,4 +140,12 @@ public class AuthenticationRepositoryAdapter implements AuthRepositoryPort {
             }
         }
     }
+
+    @Override
+    public User getUserByToken(String token) {
+        var user = jwtService.extractUsername(token);
+        var userMO = repository.findByEmail(user)
+                .orElseThrow();
+        return authMapper.toUserDomain(userMO);
+    }
 }
